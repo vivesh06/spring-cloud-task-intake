@@ -23,7 +23,8 @@ public class TaskProcessor {
 		TaskLaunchRequest req = new TaskLaunchRequest(mavenUrl, input, null, null, null);
 		System.out.println("created launch req");
 		GenericMessage<TaskLaunchRequest> message = new GenericMessage<TaskLaunchRequest>(req);
-		source.output().send(message);
+		boolean sent = source.output().send(message);
+		System.out.println("request sent: " + sent);
 	}
 
 }
